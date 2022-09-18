@@ -4,6 +4,7 @@ const rideCards = [
     rideTime: '6:00 PM',
     route: 'Kedar-Aarti-Marnikarnika-Kedar',
     pickupGhat: 'Kedar ghat',
+    estimatedAmount: '@ ₹599 onwards',
     imgLink: 'https://images.thrillophilia.com/image/upload/s--hy87qy6---/c_fill,h_600,q_auto,w_975/f_auto,fl_strip_profile/v1/images/photos/000/013/070/original/1569826243_ganga_arti1.jpg.jpg?1569826243'
     },
     {rideName:'Basic Ride',
@@ -11,6 +12,7 @@ const rideCards = [
     rideTime: 'Flexible',
     route: 'Kedar-Assi-Marnikarnika-Kedar',
     pickupGhat: 'Kedar ghat',
+    estimatedAmount: '@₹799 onwards',
     imgLink: 'https://media.tacdn.com/media/attractions-splice-spp-674x446/07/72/68/de.jpg'
     }
 ]
@@ -39,15 +41,15 @@ const timeSlots = [
 
 const priceCard = [
     {amount: 500,
-    boatType: 'motor boat',
+    boatType: 'Motor Boat',
     riderRange: '1-4'    
     },
     {amount: 800,
-    boatType: 'motor boat',
+    boatType: 'Motor Boat',
     riderRange: '5-8'    
     },
     {amount: 1000,
-    boatType: 'motor boat',
+    boatType: 'Motor Boat',
     riderRange: '8-12'    
     },
 ]

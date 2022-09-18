@@ -9,7 +9,7 @@ function finalprice(req){
 
     const strikeObj = new Create('getting_started', `${baseAPI}confirmBooking/${req.params.id}`);
     
-    questionNumberObj = strikeObj.Question('basePrice');
+    questionNumberObj = strikeObj.Question('confirmBooking');
     questionNumberObj.QuestionText().
         SetTextToQuestion("Confirm Your Booking Details 👇");
 
@@ -29,7 +29,7 @@ function finalprice(req){
 
     timeSlotAnswerObj = timeSlotAnswerObj.AnswerCard().
         SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).
-        AddTextRowToAnswer(strikeObj.H5, 'Cancel', "#009646", true);
+        AddTextRowToAnswer(strikeObj.H5, 'Cancel', "red", true);
 
     return strikeObj
 }

@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const baseAPI = require('../../config/baseAPI.js')
-const {timeSlots} = require('../../config/data.js');
-
-const Create = require('../../interfaces/strike');
 const booking = require('../../models/booking.js');
 const getUserData = require('../../middlewares/getUserData');
 const timeCardMethod = require('../../methods/timeCardMethod.js');

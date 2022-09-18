@@ -21,7 +21,7 @@ function price(req){
         timeSlotAnswerObj.AnswerCard().
         SetHeaderToAnswer(1,strikeObj.HALF_WIDTH).
             AddTextRowToAnswer(strikeObj.H3, "₹" + priceCard[i].amount,"Black",true).
-            AddTextRowToAnswer(strikeObj.H4,"Boat Type:" + priceCard[i].boatType,"#d61a7e",false).
+            AddTextRowToAnswer(strikeObj.H4,"Boat Type: " + priceCard[i].boatType,"#d61a7e",false).
             AddTextRowToAnswer(strikeObj.H4 ,"No of People: " + priceCard[i].riderRange,"Black",false);
             // AddTextRowToAnswer(strikeObj.H5, "Pickup Station: " + priceCard[i].pickupGhat,"#687987",false)
 	}

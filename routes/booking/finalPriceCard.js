@@ -36,7 +36,7 @@ router.post('/:id', getUserData,  async(req,res) => {
                     rideTime: dbRes.rideTime,
                     rideDate: dbRes.rideDate,
                     rideRoute: dbRes.rideRoute,
-                    discountCode: userResp.discount,
+                    discountCode: userResp.discount || '',
                     bookingPrice: dbRes.bookingPrice || '',
                     bookingStatus: 'pending'
                 },

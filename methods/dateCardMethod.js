@@ -1,4 +1,5 @@
 const baseAPI = require("../config/baseAPI");
+const { orange } = require("../config/constants");
 const { rideCards } = require("../config/data");
 const Create = require("../interfaces/strike");
 const booking = require("../models/booking");
@@ -43,8 +44,9 @@ async function dateCardMethod(req){
             SetHeaderToAnswer(2,strikeObj.FULL_WIDTH).
             AddGraphicRowToAnswer(strikeObj.PICTURE_ROW,[rideCards[i].imgLink], ['']).
             AddTextRowToAnswer(strikeObj.H3, rideCards[i].rideName,"Black",true).
-            AddTextRowToAnswer(strikeObj.H4,rideCards[i].desc,"#d61a7e",false).
-            AddTextRowToAnswer(strikeObj.H4, "Ride Time: " + rideCards[i].rideTime, "Black" , true).
+            AddTextRowToAnswer(strikeObj.H4,rideCards[i].desc,"#E14D2A",false).
+            AddTextRowToAnswer(strikeObj.H4, 'Starting Price: '+rideCards[i].estimatedAmount,"#Black",true).
+            AddTextRowToAnswer(strikeObj.H4, "Ride Time: " + rideCards[i].rideTime, orange , true).
             AddTextRowToAnswer(strikeObj.H4 ,"Routes Covered: " + rideCards[i].route,"Black",false).
             AddTextRowToAnswer(strikeObj.H5, "Pickup Station: " + rideCards[i].pickupGhat,"#687987",false)
 	}
