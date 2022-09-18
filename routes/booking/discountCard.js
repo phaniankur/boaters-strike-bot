@@ -10,7 +10,7 @@ router.post('/:id', getUserData, async(req,res,next) => {
     const strikeBody = req.body.bybrisk_session_variables;
     const userResp = req.body.user_session_variables;
     const dbRes = req.body.user_session_variables.rideDetails;
-    // console.log('dicount Price', req.body)
+    console.log('dicount Price', req.body)
 
     try{
          userResp.basePrice[0] = userResp.basePrice[0].replace('₹', '')

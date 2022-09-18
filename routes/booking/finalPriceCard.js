@@ -10,6 +10,7 @@ const validateDiscount = require('../../middlewares/validateDiscount.js');
 const finalPrice = require('../../methods/finalPrice');
 const { validDiscounts } = require('../../config/data.js');
 const discount = require('../../methods/discount.js');
+const invalidDiscount = require('../../methods/invalidDiscount');
 
 router.post('/:id', getUserData,  async(req,res,next) => {
     // console.log('final Price', req.body)
@@ -28,7 +29,7 @@ router.post('/:id', getUserData,  async(req,res,next) => {
             strikeObj = finalPrice(req);
         } else{
             console.log('invalid code')
-            strikeObj = discount(req);
+            strikeObj = invalidDiscount(req);
         }
 
         try{
@@ -39,7 +40,7 @@ router.post('/:id', getUserData,  async(req,res,next) => {
                     rideDate: dbRes.rideDate,
                     rideRoute: dbRes.rideRoute,
                     discountCode: userResp.discount,
-                    bookingPrice: discountValid ? dbRes.bookingPrice : '',
+                    bookingPrice: dbRes.bookingPrice || '',
                     bookingStatus: 'pending'
                 },
             }).then(console.log('saved'))
