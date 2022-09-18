@@ -5,21 +5,31 @@ function finalprice(req){
 
     const dbRes = req.body.user_session_variables.rideDetails;
 
+    console.log('final details', dbRes)
+
     const strikeObj = new Create('getting_started', `${baseAPI}confirmBooking/${req.params.id}`);
     
-    // Question interface 5
-    //defining question obj
     questionNumberObj = strikeObj.Question('basePrice');
     questionNumberObj.QuestionText().
-        SetTextToQuestion("Your Final Price");
-    
-    // Answer interface 5
-    // defining an answer obj for the above  question
+        SetTextToQuestion("Confirm Your Booking Details 👇");
+
     timeSlotAnswerObj = questionNumberObj.Answer(true);
     timeSlotAnswerObj.AnswerCardArray(strikeObj.VERTICAL_ORIENTATION);
 
-        // apennding answers for the above answer obj
-    timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).AddTextRowToAnswer(strikeObj.H5, "₹" + dbRes.bookingPrice, "#009646", true)
+    timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(10, strikeObj.HALF_WIDTH).
+    AddTextRowToAnswer(strikeObj.H4, "Type: " + dbRes.rideRoute, "Black", false).
+    AddTextRowToAnswer(strikeObj.H4, "Date: " + dbRes.rideDate, "red", false).
+    AddTextRowToAnswer(strikeObj.H4, "Time: " + dbRes.rideTime, "red", false).
+    AddTextRowToAnswer(strikeObj.H4, "Pickup Point: Kedar Ghat", "red", false).
+    AddTextRowToAnswer(strikeObj.H4, "Total Payable Amount: ₹" + dbRes.bookingPrice, "Black", true)
+
+    timeSlotAnswerObj = timeSlotAnswerObj.AnswerCard().
+        SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).
+        AddTextRowToAnswer(strikeObj.H5, 'Confirm Booking', "#009646", true);
+
+    timeSlotAnswerObj = timeSlotAnswerObj.AnswerCard().
+        SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).
+        AddTextRowToAnswer(strikeObj.H5, 'Cancel', "#009646", true);
 
     return strikeObj
 }

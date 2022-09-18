@@ -44,6 +44,7 @@ async function dateCardMethod(req){
             AddGraphicRowToAnswer(strikeObj.PICTURE_ROW,[rideCards[i].imgLink], ['']).
             AddTextRowToAnswer(strikeObj.H3, rideCards[i].rideName,"Black",true).
             AddTextRowToAnswer(strikeObj.H4,rideCards[i].desc,"#d61a7e",false).
+            AddTextRowToAnswer(strikeObj.H4, "Ride Time: " + rideCards[i].rideTime, "Black" , true).
             AddTextRowToAnswer(strikeObj.H4 ,"Routes Covered: " + rideCards[i].route,"Black",false).
             AddTextRowToAnswer(strikeObj.H5, "Pickup Station: " + rideCards[i].pickupGhat,"#687987",false)
 	}

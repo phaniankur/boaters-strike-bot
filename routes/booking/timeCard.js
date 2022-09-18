@@ -10,11 +10,10 @@ const getUserData = require('../../middlewares/getUserData');
 const timeCardMethod = require('../../methods/timeCardMethod.js');
 
 router.post('/:id', getUserData, async(req,res) => {
-
-    const strikeBody = req.body.bybrisk_session_variables;
-    const userResp = req.body.user_session_variables;
-
     try{
+        const strikeBody = req.body.bybrisk_session_variables;
+        const userResp = req.body.user_session_variables;
+
         await booking.findByIdAndUpdate(req.params.id,{
             riderPhone: strikeBody.phone,
             rideDetails:{
@@ -22,13 +21,13 @@ router.post('/:id', getUserData, async(req,res) => {
                 rideRoute: userResp.rideRoute[0],
                 bookingStatus: 'initiated'
             },
-        })
-    }catch(err){
+        }).catch(err=> console.log(err))
+        let strikeObj = await timeCardMethod(req);
+        res.status(200).json(strikeObj.Data());
+    } catch(err){
         console.log(err)
-    }
-    
-    let strikeObj = await timeCardMethod(req);
-    res.status(200).json(strikeObj.Data());
+    } 
+
 });
 
 module.exports = router;

@@ -2,11 +2,8 @@ const baseAPI = require("../config/baseAPI");
 const Create = require("../interfaces/strike");
 
 async function acceptDiscountMethod(req){
-    const strikeObj = new Create('getting_started', `${baseAPI}havediscount/${req.params.id}`);
 
-    const strikeBody = req.body.bybrisk_session_variables;
-    const userResp = req.body.user_session_variables;
-    const dbRes = req.body.user_session_variables.rideDetails;
+    const strikeObj = new Create('getting_started', `${baseAPI}havediscount/${req.params.id}`);
 
     haveDiscObj = strikeObj.Question('haveDisc');
     haveDiscObj.QuestionText().

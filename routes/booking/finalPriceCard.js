@@ -1,38 +1,35 @@
 const express = require('express');
 const router = express.Router();
 
-const baseAPI = require('../../config/baseAPI.js')
-
-const Create = require('../../interfaces/strike');
 const booking = require('../../models/booking.js');
 const getUserData = require('../../middlewares/getUserData.js');
-const validateDiscount = require('../../middlewares/validateDiscount.js');
+
 const finalPrice = require('../../methods/finalPrice');
 const { validDiscounts } = require('../../config/data.js');
-const discount = require('../../methods/discount.js');
+
 const invalidDiscount = require('../../methods/invalidDiscount');
 
-router.post('/:id', getUserData,  async(req,res,next) => {
+router.post('/:id', getUserData,  async(req,res) => {
     // console.log('final Price', req.body)
-    const strikeBody = req.body.bybrisk_session_variables;
-    const userResp = req.body.user_session_variables;
-    const dbRes = req.body.user_session_variables.rideDetails;
-
-    console.log('final price card',userResp)
-    let strikeObj;
-
-    if(userResp.discount){
-        const discountValid = await validDiscounts.find(item => item.code === userResp.discount.toLowerCase())
-        if(discountValid){
-            // userResp.basePrice[0] = userResp.basePrice[0].replace('₹', '')
-            dbRes.bookingPrice = dbRes.bookingPrice - discountValid.discountPrice
-            strikeObj = finalPrice(req);
-        } else{
-            console.log('invalid code')
-            strikeObj = invalidDiscount(req);
-        }
-
-        try{
+    try{
+        const strikeBody = req.body.bybrisk_session_variables;
+        const userResp = req.body.user_session_variables;
+        const dbRes = req.body.user_session_variables.rideDetails;
+    
+        // console.log('final price card',userResp)
+        let strikeObj;
+    
+        if(userResp.discount){
+            const discountValid = await validDiscounts.find(item => item.code === userResp.discount.toLowerCase())
+            if(discountValid){
+                // userResp.basePrice[0] = userResp.basePrice[0].replace('₹', '')
+                dbRes.bookingPrice = dbRes.bookingPrice - discountValid.discountPrice
+                strikeObj = finalPrice(req);
+            } else{
+                console.log('invalid code')
+                strikeObj = invalidDiscount(req);
+            }
+    
             await booking.findByIdAndUpdate(req.params.id,{
                 riderPhone: strikeBody.phone,
                 rideDetails:{
@@ -43,12 +40,13 @@ router.post('/:id', getUserData,  async(req,res,next) => {
                     bookingPrice: dbRes.bookingPrice || '',
                     bookingStatus: 'pending'
                 },
-            }).then(console.log('saved'))
-        }catch(err){
-            console.log(err)
+            }).then(console.log('saved')).catch(err=> console.log(err))
         }
+        res.status(200).json(strikeObj.Data());
+    }catch(err){
+        console.log(err)
     }
-    res.status(200).json(strikeObj.Data());
+
 });
 
 module.exports = router;
