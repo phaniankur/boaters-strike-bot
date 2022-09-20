@@ -37,7 +37,7 @@ async function confirmBookingMethod(req){
 
     //answer
     cancelAnswerObj = quesObj.Answer(false);
-    cancelAnswerObj.AnswerCardArray(strikeObj.HORIZONTAL_ORIENTATION);
+    cancelAnswerObj.AnswerCardArray(strikeObj.VERTICAL_ORIENTATION);
 
         cancelAnswerObj = cancelAnswerObj.AnswerCard().
             SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).

@@ -15,7 +15,7 @@ function invalidDiscount(req){
     
     //answer
     discAnswer = invalidDisc.Answer(false);
-    discAnswer.AnswerCardArray(strikeObj.HORIZONTAL_ORIENTATION);
+    discAnswer.AnswerCardArray(strikeObj.VERTICAL_ORIENTATION);
 
         discAnswer = discAnswer.AnswerCard().
             SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).
