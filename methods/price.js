@@ -3,8 +3,13 @@ const { priceCard } = require("../config/data");
 const Create = require("../interfaces/strike");
 
 function price(req){
+    console.log('price card', req.body)
+    const userResp = req.body.user_session_variables;
 
-    const strikeObj = new Create('getting_started', `${baseAPI}discountcard/${req.params.id}`);
+    let strikeObj;
+    userResp.rideRoute[0].toLowerCase() === 'ganga aarti darshan' ?
+    strikeObj = new Create('getting_started',`${baseAPI}discountcard/${req.params.id}`):
+    strikeObj = new Create('getting_started', `${baseAPI}timecard/${req.params.id}`);
     
     // Question interface 5
     //defining question obj
@@ -25,13 +30,8 @@ function price(req){
             AddTextRowToAnswer(strikeObj.H4 ,"No of People: " + priceCard[i].riderRange,"Black",false);
             // AddTextRowToAnswer(strikeObj.H5, "Pickup Station: " + priceCard[i].pickupGhat,"#687987",false)
 	}
-    timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).AddTextRowToAnswer(strikeObj.H4, "↩️ Back to Previous handler", "#009646", )
+    timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).AddTextRowToAnswer(strikeObj.H4, "↩️ Change Ride Date", "#009646", )
 
-    // rideDiscountObj = strikeObj.Question('discount');
-    // rideDiscountObj.QuestionText().
-    //     SetTextToQuestion("Do you have any discount code?");
-
-    //     rideDiscountObj.TextInput();
     return strikeObj;
 }
 module.exports = price;

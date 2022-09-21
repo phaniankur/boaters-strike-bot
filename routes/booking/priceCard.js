@@ -12,23 +12,17 @@ router.post('/:id', getUserData, async(req,res) => {
         const strikeBody = req.body.bybrisk_session_variables;
         const userResp = req.body.user_session_variables;
         const dbRes = req.body.user_session_variables.rideDetails;
-        console.log('price card', userResp)
 
         await booking.findByIdAndUpdate(req.params.id,{
             riderPhone: strikeBody.phone,
             rideDetails:{
-                rideTime: userResp.rideTime[0],
-                rideDate: dbRes.rideDate,
-                rideRoute: dbRes.rideRoute
+                rideDate: userResp.dateOfRide[0],
+                rideRoute: userResp.rideRoute[0],
+                bookingStatus: 'initiated'
             },
         }).catch(err=> console.log(err))
 
-        let strikeObj;
-        if(userResp.rideTime[0] === '↩️ Back to Previous handler'){
-            strikeObj = await dateCardMethod(req)
-        } else{
-            strikeObj = await price(req);
-        }
+        let strikeObj = await price(req);
         res.status(200).json(strikeObj.Data());
     }catch(err){
         console.log(err)

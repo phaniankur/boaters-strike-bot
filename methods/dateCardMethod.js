@@ -13,7 +13,8 @@ async function dateCardMethod(req){
     })
     newBooking.save();
 
-    const strikeObj = new Create('getting_started', `${baseAPI}timecard/${newBooking._id}`);
+    const strikeObj = new Create('getting_started', `${baseAPI}pricecard/${newBooking._id}`);
+    // const strikeObj = new Create('getting_started', `${baseAPI}timecard/${newBooking._id}`);
 
     // Question date
     rideDateObj = strikeObj.Question('dateOfRide');

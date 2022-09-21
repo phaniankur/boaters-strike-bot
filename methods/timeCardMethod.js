@@ -3,7 +3,11 @@ const { timeSlots } = require("../config/data");
 const Create = require("../interfaces/strike");
 
 async function timeCardMethod(req){
-    const strikeObj = new Create('getting_started',`${baseAPI}pricecard/${req.params.id}`);
+    const userResp = req.body.user_session_variables; 
+    // console.log('timeCard', userResp)
+    let strikeObj;
+    
+    strikeObj = new Create('getting_started',`${baseAPI}discountcard/${req.params.id}`)
     
     // Question interface 5
     //defining question obj
@@ -19,7 +23,7 @@ async function timeCardMethod(req){
         // apennding answers for the above answer obj
         timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).AddTextRowToAnswer(strikeObj.H4, timeSlots[i], "#c91a3a", true)
 	}
-    timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).AddTextRowToAnswer(strikeObj.H4, "↩️ Back to Previous handler", "#009646", )
+    timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).AddTextRowToAnswer(strikeObj.H4, "↩️ Go Back", "#009646", )
     return strikeObj;
 }
 module.exports = timeCardMethod

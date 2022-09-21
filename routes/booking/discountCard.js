@@ -3,30 +3,40 @@ const router = express.Router();
 
 const booking = require('../../models/booking.js');
 const getUserData = require('../../middlewares/getUserData.js');
-const timeCardMethod = require('../../methods/timeCardMethod.js');
 const acceptDiscountMethod = require('../../methods/acceptDiscountMethod.js');
+const price = require('../../methods/price.js');
 
 router.post('/:id', getUserData, async(req,res) => {
 try{
     const strikeBody = req.body.bybrisk_session_variables;
     const userResp = req.body.user_session_variables;
     const dbRes = req.body.user_session_variables.rideDetails;
-    // console.log('dicount Price', req.body)
+    console.log('dicount Price', userResp)
+    let rideTime;
+    if(dbRes.rideRoute === 'Ganga Aarti Darshan'){
+        rideTime = '6:00 PM';
+        userResp.basePrice[0] = userResp.basePrice[0].replace('₹', '')
+        bookingPrice = userResp.basePrice[0];
+    }
+    else{
+        rideTime = userResp.rideTime[0];
+        bookingPrice = dbRes.bookingPrice;
+    }
 
-    userResp.basePrice[0] = userResp.basePrice[0].replace('₹', '')
     await booking.findByIdAndUpdate(req.params.id,{
         riderPhone: strikeBody.phone,
         rideDetails:{
-            rideTime: dbRes.rideTime,
+            rideTime: rideTime,
             rideDate: dbRes.rideDate,
             rideRoute: dbRes.rideRoute,
-            bookingPrice: userResp.basePrice[0]
+            bookingPrice: bookingPrice,
+            bookingStatus: dbRes.bookingStatus
         },
     }).catch(err=> console.log(err))
 
     let strikeObj;
-    if(userResp.basePrice[0] === '↩️ Back to Previous handler'){
-        strikeObj = await timeCardMethod(req)
+    if(rideTime === '↩️ Go Back'){
+        strikeObj = await price(req)
     } else{
         strikeObj = await acceptDiscountMethod(req);
     }

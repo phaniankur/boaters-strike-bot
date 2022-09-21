@@ -13,6 +13,7 @@ const invalidDiscountCard = require('./routes/booking/invalidDiscountCard');
 const finalPriceCard = require('./routes/booking/finalPriceCard');
 const confirmBooking = require('./routes/booking/confirmBooking');
 const getAllBookingStatus = require('./routes/getAllBookingStatus');
+const previousOrders = require('./routes/previousOrders');
 
 app.use(bodyParser.json());
 
@@ -21,7 +22,7 @@ app.use('/bookingResponse',bookingResponse);
 
 // app.use(getUserData);
 
-app.use('/', getAllBookingStatus);
+app.use('/', getAllBookingStatus, previousOrders);
 app.use('/datecard',dateCard);
 app.use('/timecard',timeCard);
 app.use('/pricecard',priceCard);

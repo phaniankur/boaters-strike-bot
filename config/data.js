@@ -1,5 +1,5 @@
 const rideCards = [
-    {rideName:'Ganga Aarti Ride 🪔',
+    {rideName:'Ganga Aarti Darshan',
     desc: 'Your ride will start from Kedar Ghat to Marnikarnika Ghat via Ganga Aarti Darshan and back.',
     rideTime: '6:00 PM',
     route: 'Kedar-Aarti-Marnikarnika-Kedar',
