@@ -6,7 +6,6 @@ async function confirmBookingMethod(req){
     const strikeBody = req.body.bybrisk_session_variables;
     const userResp = req.body.user_session_variables;
     const dbRes = req.body.user_session_variables.rideDetails;
-    // userResp.basePrice[0] = userResp.basePrice[0].replace('₹', '');
 
     await booking.findByIdAndUpdate(req.params.id,{
         riderPhone: strikeBody.phone,
@@ -25,7 +24,9 @@ async function confirmBookingMethod(req){
             txnId: '',
             paymentStatus: ''
         },
-    }).catch(err=> console.log(err))
+    })
+    .then((data)=> pushNotification(req))
+    .catch(err=> console.log(err))
     
     const strikeObj = new Create('getting_started', '');
     
