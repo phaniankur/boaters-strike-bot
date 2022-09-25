@@ -11,7 +11,7 @@ try{
     const strikeBody = req.body.bybrisk_session_variables;
     const userResp = req.body.user_session_variables;
     const dbRes = req.body.user_session_variables.rideDetails;
-    console.log('dicount Price', userResp)
+
     let rideTime;
     if(dbRes.rideRoute === 'Ganga Aarti Darshan'){
         rideTime = '6:00 PM';

@@ -5,8 +5,6 @@ function finalprice(req){
 
     const dbRes = req.body.user_session_variables.rideDetails;
 
-    console.log('final details', dbRes)
-
     const strikeObj = new Create('getting_started', `${baseAPI}confirmBooking/${req.params.id}`);
     
     questionNumberObj = strikeObj.Question('confirmBooking');

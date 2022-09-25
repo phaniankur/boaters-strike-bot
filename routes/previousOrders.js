@@ -6,7 +6,7 @@ const booking = require("../models/booking");
 
 //template
 router.post('/previousorder', async(req,res) => {
-    console.log('previous order', req.body)
+    // console.log('previous order', req.body)
     try{
         const strikeBody = req.body.bybrisk_session_variables;
         const allBookings = await booking.find({

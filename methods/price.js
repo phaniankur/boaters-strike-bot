@@ -3,7 +3,7 @@ const { priceCard } = require("../config/data");
 const Create = require("../interfaces/strike");
 
 function price(req){
-    console.log('price card', req.body)
+
     const userResp = req.body.user_session_variables;
 
     let strikeObj;
