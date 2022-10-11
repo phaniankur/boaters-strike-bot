@@ -8,11 +8,10 @@ function getUserData(req,res,next) {
             console.log(err);
             return
         }
-        if(data.length == 0) {
+        if(data.length === 0) {
             console.log("No record found")
             return
         }else{
-            // console.log('record found', data)
             userResp.rideDetails = data.rideDetails || '';
             next();
         }

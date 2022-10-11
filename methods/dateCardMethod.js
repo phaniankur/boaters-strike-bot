@@ -14,7 +14,6 @@ async function dateCardMethod(req){
     newBooking.save();
 
     const strikeObj = new Create('getting_started', `${baseAPI}pricecard/${newBooking._id}`);
-    // const strikeObj = new Create('getting_started', `${baseAPI}timecard/${newBooking._id}`);
 
     // Question date
     rideDateObj = strikeObj.Question('dateOfRide');
@@ -37,7 +36,6 @@ async function dateCardMethod(req){
 
     timeSlotAnswerObj = timeSlotAnswerObj.AnswerCard().
     SetHeaderToAnswer(10,strikeObj.FULL_WIDTH).
-    // AddGraphicRowToAnswer(strikeObj.PICTURE_ROW,['https://images.thrillophilia.com/image/upload/s--hy87qy6---/c_fill,h_600,q_auto,w_975/f_auto,fl_strip_profile/v1/images/photos/000/013/070/original/1569826243_ganga_arti1.jpg.jpg?1569826243'], ['']).
     AddTextRowToAnswer("👇Select your Route");
     for(let i=0;i<rideCards.length;i++) {
 

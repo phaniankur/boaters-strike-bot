@@ -11,9 +11,9 @@ try{
     const strikeBody = req.body.bybrisk_session_variables;
     const userResp = req.body.user_session_variables;
     const dbRes = req.body.user_session_variables.rideDetails;
-    console.log('dicount Price', userResp)
+
     let rideTime;
-    if(dbRes.rideRoute === 'Ganga Aarti Darshan'){
+    if(dbRes.rideRoute === 'Ganga Aarti Boat-Ride'){
         rideTime = '6:00 PM';
         userResp.basePrice[0] = userResp.basePrice[0].replace('₹', '')
         bookingPrice = userResp.basePrice[0];

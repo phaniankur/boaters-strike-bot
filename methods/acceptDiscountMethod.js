@@ -13,12 +13,12 @@ async function acceptDiscountMethod(req){
     getDiscAns.AnswerCardArray(strikeObj.VERTICAL_ORIENTATION);
 
     getDiscAns = getDiscAns.AnswerCard().
-        SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).
-        AddTextRowToAnswer(strikeObj.H5, 'YES', "#009646", true);
+        SetHeaderToAnswer(1, strikeObj.WRAP_WIDTH).
+        AddTextRowToAnswer(strikeObj.H5, 'YES', "#1746A2", true);
 
     getDiscAns = getDiscAns.AnswerCard().
-        SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).
-        AddTextRowToAnswer(strikeObj.H5, 'NO', "#009646", true);
+        SetHeaderToAnswer(1, strikeObj.WRAP_WIDTH).
+        AddTextRowToAnswer(strikeObj.H5, 'NO', "#FF731D", true);
     return strikeObj;
 }
 module.exports = acceptDiscountMethod

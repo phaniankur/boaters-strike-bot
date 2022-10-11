@@ -21,9 +21,9 @@ async function timeCardMethod(req){
     timeSlotAnswerObj.AnswerCardArray(strikeObj.VERTICAL_ORIENTATION);
     for(let i=0;i<timeSlots.length;i++) {
         // apennding answers for the above answer obj
-        timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).AddTextRowToAnswer(strikeObj.H4, timeSlots[i], "#c91a3a", true)
+        timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(1, strikeObj.WRAP_WIDTH).AddTextRowToAnswer(strikeObj.H4, timeSlots[i], "#FF731D", true)
 	}
-    timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).AddTextRowToAnswer(strikeObj.H4, "↩️ Go Back", "#009646", )
+    timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(1, strikeObj.WRAP_WIDTH).AddTextRowToAnswer(strikeObj.H4, "↩️ Go Back", "#009646", )
     return strikeObj;
 }
 module.exports = timeCardMethod

@@ -7,8 +7,8 @@ const timeCardMethod = require('../../methods/timeCardMethod.js');
 const dateCardMethod = require('../../methods/dateCardMethod.js');
 
 router.post('/:id', getUserData, async(req,res) => {
+    
     try{
-        console.log(req.body)
         const strikeBody = req.body.bybrisk_session_variables;
         const userResp = req.body.user_session_variables;
         const dbRes = req.body.user_session_variables.rideDetails;
