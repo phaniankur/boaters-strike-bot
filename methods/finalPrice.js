@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const baseAPI = require("../config/baseAPI");
 const Create = require("../interfaces/strike");
 
@@ -37,5 +36,5 @@ function finalprice(req){
 
     return strikeObj
 }
->>>>>>> 4b194cbb85be9d87af25db80cee9158f9f361797
+
 module.exports = finalprice;
