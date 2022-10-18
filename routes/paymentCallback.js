@@ -28,7 +28,7 @@ router.post('/paymentcallback', (req,res) => {
               bookingPrice: paidAmount,
               orderID: orderID,
               paymentMethod: req.body.data.link_meta.payment_methods
-            }            
+            }
           }
         },
         {
@@ -38,11 +38,11 @@ router.post('/paymentcallback', (req,res) => {
         async(err, data) => {
           if (err) {
               console.log("Something wrong when updating data!");
-          }     
+          }
           await emailNotification(data);
           await pushNotification(data);
           strikeObj = await confirmBookingMethod();
-        },        
+        },
         ).catch(err=> console.log(err))
       }
       console.log("payment middleware")

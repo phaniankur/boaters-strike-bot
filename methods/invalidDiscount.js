@@ -9,7 +9,7 @@ function invalidDiscount(req){
     invalidDisc = strikeObj.Question('invalidDiscount');
     invalidDisc.QuestionText().
         SetTextToQuestion("Invalid Code! 🤷‍♂️");
-    
+
     //answer
     discAnswer = invalidDisc.Answer(false);
     discAnswer.AnswerCardArray(strikeObj.VERTICAL_ORIENTATION);

@@ -24,11 +24,11 @@ async function confirmBookingMethod(req){
         orderDetails:{
             bookingStatus: 'cancelled'
         }
-               
+
     }).catch(err=> console.log(err))
-    
+
     const strikeObj = new Create('cancel_booking', '');
-    
+
     quesObj = strikeObj.Question('val1');
     quesObj.
         QuestionText().

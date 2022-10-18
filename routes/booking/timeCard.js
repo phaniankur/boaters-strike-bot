@@ -8,7 +8,7 @@ const dateCardMethod = require('../../methods/dateCardMethod.js');
 const acceptDiscountMethod = require('../../methods/acceptDiscountMethod.js');
 
 router.post('/:id', getUserData, async(req,res) => {
-    
+
     try{
         const strikeBody = req.body.bybrisk_session_variables;
         const userResp = req.body.user_session_variables;
@@ -35,13 +35,13 @@ router.post('/:id', getUserData, async(req,res) => {
                     rideDate: dbRes.rideDate,
                     rideRoute: dbRes.rideRoute
                 },
-                
+
             }).catch(err=> console.log(err))
         }
         res.status(200).json(strikeObj.Data());
     } catch(err){
         console.log(err)
-    } 
+    }
 
 });
 

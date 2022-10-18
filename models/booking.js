@@ -11,7 +11,7 @@ const bookingSchema = new Schema({
     username: {type: String, required: false},
     rideDetails:{
         bookingPrice: {type: Number, required: false},
-        discountCode: {type: String, required: false},  
+        discountCode: {type: String, required: false},
         rideDate: { type: String, required: false },
         rideTime: {type: String, required: false},
         noofRiders: {type: String, required: false},
@@ -35,5 +35,5 @@ const bookingSchema = new Schema({
     }
 },
 {timeStamp: true}
-); 
+);
 module.exports = mongoose.model("booking", bookingSchema)

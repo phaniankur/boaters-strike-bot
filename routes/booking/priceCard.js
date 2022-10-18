@@ -6,7 +6,7 @@ const getUserData = require('../../middlewares/getUserData.js');
 const price = require('../../methods/price.js');
 
 router.post('/:id', getUserData, async(req,res) => {
-    
+
     try{
         const strikeBody = req.body.bybrisk_session_variables;
         const userResp = req.body.user_session_variables;

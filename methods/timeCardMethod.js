@@ -3,17 +3,17 @@ const { timeSlots } = require("../config/data");
 const Create = require("../interfaces/strike");
 
 async function timeCardMethod(req){
-    
+
     let strikeObj;
-    
+
     strikeObj = new Create('getting_started',`${baseAPI}discountcard/${req.params.id}`)
-    
+
     // Question interface 5
     //defining question obj
     questionNumberObj = strikeObj.Question('rideTime');
     questionNumberObj.QuestionText().
         SetTextToQuestion("Please select your preferred time");
-    
+
     // Answer interface 5
     // defining an answer obj for the above  question
     timeSlotAnswerObj = questionNumberObj.Answer(true);

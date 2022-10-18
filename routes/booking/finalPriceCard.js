@@ -10,14 +10,12 @@ const { validDiscounts } = require('../../config/data.js');
 const invalidDiscount = require('../../methods/invalidDiscount');
 
 router.post('/:id', getUserData,  async(req,res) => {
-
     try{
         const strikeBody = req.body.bybrisk_session_variables;
         const userResp = req.body.user_session_variables;
         const dbRes = req.body.user_session_variables.rideDetails;
-
         let strikeObj;
-    
+
         if(userResp.discount){
             const discountValid = await validDiscounts.find(item => item.code === userResp.discount.toLowerCase())
             if(discountValid){
@@ -28,7 +26,7 @@ router.post('/:id', getUserData,  async(req,res) => {
                 console.log('invalid code')
                 strikeObj = invalidDiscount(req);
             }
-    
+
             await booking.findByIdAndUpdate(req.params.id,{
                 riderPhone: strikeBody.phone,
                 rideDetails:{

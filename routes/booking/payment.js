@@ -42,7 +42,6 @@ try{
   .catch(err=> console.log(err))
 
     let paymentLink = await getPaymentLink(req)
-
     strikeObj = await PaymentInterfaceMethod(req, paymentLink)
   } else{
     strikeObj = await emailMethod(req);
@@ -54,7 +53,7 @@ try{
 } catch(err){
     console.log(err)
 }
-    
+
 });
 
 module.exports = router;

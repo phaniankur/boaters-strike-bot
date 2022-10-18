@@ -10,7 +10,6 @@ router.post('/:id', getUserData, async(req,res,next) => {
         const strikeBody = req.body.bybrisk_session_variables;
         const userResp = req.body.user_session_variables;
         const dbRes = req.body.user_session_variables.rideDetails;
-
         let strikeObj;
         if(userResp.invalidDiscount[0] === 'Try Again'){
             strikeObj = await discount(req);

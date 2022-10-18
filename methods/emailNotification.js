@@ -7,7 +7,7 @@ async function emailNotification(data){
     let EMAIL_URL = 'https://cuba.bybrisk.com/mail';
     let EMAIL = `<!DOCTYPE html>
     <html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
-    
+
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -31,26 +31,26 @@ async function emailNotification(data){
             * {
                 box-sizing: border-box;
             }
-    
+
             body {
                 margin: 0;
                 padding: 0;
             }
-    
+
             a[x-apple-data-detectors] {
                 color: inherit !important;
                 text-decoration: inherit !important;
             }
-    
+
             #MessageViewBody a {
                 color: inherit;
                 text-decoration: none;
             }
-    
+
             p {
                 line-height: inherit
             }
-    
+
             .desktop_hide,
             .desktop_hide table {
                 mso-hide: all;
@@ -58,34 +58,34 @@ async function emailNotification(data){
                 max-height: 0px;
                 overflow: hidden;
             }
-    
+
             @media (max-width:730px) {
                 .desktop_hide table.icons-inner {
                     display: inline-block !important;
                 }
-    
+
                 .icons-inner {
                     text-align: center;
                 }
-    
+
                 .icons-inner td {
                     margin: 0 auto;
                 }
-    
+
                 .image_block img.big,
                 .row-content {
                     width: 100% !important;
                 }
-    
+
                 .mobile_hide {
                     display: none;
                 }
-    
+
                 .stack .column {
                     width: 100%;
                     display: block;
                 }
-    
+
                 .mobile_hide {
                     min-height: 0;
                     max-height: 0;
@@ -93,24 +93,24 @@ async function emailNotification(data){
                     overflow: hidden;
                     font-size: 0px;
                 }
-    
+
                 .desktop_hide,
                 .desktop_hide table {
                     display: table !important;
                     max-height: none !important;
                 }
-    
+
                 .row-2 .column-1 .block-1.heading_block h1 {
                     font-size: 18px !important;
                 }
-    
+
                 .row-7 .column-1 .block-1.heading_block h1 {
                     font-size: 16px !important;
                 }
             }
         </style>
     </head>
-    
+
     <body style="background-color: #FFFFFF; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;">
         <table class="nl-container" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #FFFFFF;">
             <tbody>
@@ -490,13 +490,13 @@ async function emailNotification(data){
                                     </td>
                                 </tr>
                             </tbody>
-                        </table>                       
+                        </table>
                     </td>
                 </tr>
             </tbody>
         </table><!-- End -->
     </body>
-    
+
     </html>`
 
     try{
@@ -516,7 +516,7 @@ async function emailNotification(data){
         body: EMAIL
     }
 
-    await axios.post(EMAIL_URL, boatrrBody, 
+    await axios.post(EMAIL_URL, boatrrBody,
     {auth: {
         username: process.env.MAIL_USERNAME,
         password: process.env.MAIL_PASSWORD
@@ -533,17 +533,17 @@ async function emailNotification(data){
         body: `Booking Details:<br><br><h1>ORDERID: ${data.orderDetails.orderID}</h1><br> Ride Date: ${data.rideDetails.rideDate}<br>Ride Time: ${data.rideDetails.rideTime}<br> Paid Amount: ${data.orderDetails.bookingPrice}<br><br>Regards,<br>Team boatrr.`
     }
 
-    await axios.post(EMAIL_URL, adminBody, 
+    await axios.post(EMAIL_URL, adminBody,
     {auth: {
         username: process.env.MAIL_USERNAME,
         password: process.env.MAIL_PASSWORD
     }})
     .then(res=> console.log('Admin mail sent.',res.data))
-    .catch(err=> console.log(err)) 
+    .catch(err=> console.log(err))
     }catch{
         console.log(err)
     }
-    
+
 }
 
 module.exports = emailNotification

@@ -3,13 +3,13 @@ const Create = require("../interfaces/strike");
 async function confirmBookingMethod(req, paymentConfirm){
 
     const strikeBody = req.body.bybrisk_session_variables;
-    
+
     const strikeObj = new Create('confirm booking', '');
-    
+
     quesObj = strikeObj.Question('val1');
     quesObj.
         QuestionText().
-            SetTextToQuestion(`Yay! Your boat-ride is booked with boatrr!\nHere are your ride details.👇`)
+            SetTextToQuestion(`Hi ${strikeBody.username},\nYay! Your boat-ride is booked with Boatrr!\nHere are your ride details.👇`)
             // SetTextToQuestion(`Hi ${strikeBody.username}, your ride is Booked with Boatrr.`)
             timeSlotAnswerObj = quesObj.Answer(true);
             timeSlotAnswerObj.AnswerCardArray(strikeObj.VERTICAL_ORIENTATION);
@@ -22,7 +22,7 @@ async function confirmBookingMethod(req, paymentConfirm){
             AddTextRowToAnswer(strikeObj.H4, "Amount Paid: ₹" + paymentConfirm.orderDetails.bookingPrice, "#1746A2", true).
             AddTextRowToAnswer(strikeObj.H5, "Scheduled on: " + paymentConfirm.orderDetails.orderID, "#5F9DF7", false);
 
-            timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).AddTextRowToAnswer(strikeObj.H5, "Ride details have been sent to your email.\nYou may now close this conversation.", "#628E90", false )
+            timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(1, strikeObj.WRAP_WIDTH).AddTextRowToAnswer(strikeObj.H4, "Ride details have been sent to your email.\nYou may now close this conversation.", "#628E90", )
     return strikeObj
 }
 module.exports = confirmBookingMethod

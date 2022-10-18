@@ -7,7 +7,7 @@ const cancelBookingMethod = require('../../methods/cancelBookingMethod.js');
 
 router.post('/:id', async(req,res) => {
 try{
-    
+
     const userResp = req.body.user_session_variables;
 
     let strikeObj;
@@ -21,7 +21,7 @@ try{
 } catch(err){
     console.log(err)
 }
-    
+
 });
 
 module.exports = router;

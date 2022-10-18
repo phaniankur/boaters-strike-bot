@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const baseAPI = require("../config/baseAPI");
 const Create = require("../interfaces/strike");
 
@@ -7,14 +8,14 @@ function finalprice(req){
     const dbRes = req.body.user_session_variables.rideDetails;
 
     const strikeObj = new Create('getting_started', `${baseAPI}emailcard/${req.params.id}`);
-    
+
     questionNumberObj = strikeObj.Question('confirmBooking');
     questionNumberObj.QuestionText().
         SetTextToQuestion("Confirm Your Booking Details 👇");
 
     timeSlotAnswerObj = questionNumberObj.Answer(true);
     timeSlotAnswerObj.AnswerCardArray(strikeObj.VERTICAL_ORIENTATION);
-    
+
     userResp && userResp.discount ?
     timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(10, strikeObj.FULL_WIDTH).
     AddTextRowToAnswer(strikeObj.H4, 'Yay!, Discount Applied. Here is your ride summary 👇', "#1746A2", false) : null
@@ -36,4 +37,5 @@ function finalprice(req){
 
     return strikeObj
 }
-module.exports = finalprice; 
+>>>>>>> 4b194cbb85be9d87af25db80cee9158f9f361797
+module.exports = finalprice;

@@ -42,15 +42,15 @@ const timeSlots = [
 const priceCard = [
     {amount: 500,
     boatType: 'Motor Boat',
-    riderRange: '1-4'    
+    riderRange: '1-4'
     },
     {amount: 800,
     boatType: 'Motor Boat',
-    riderRange: '5-8'    
+    riderRange: '5-8'
     },
     {amount: 1000,
     boatType: 'Motor Boat',
-    riderRange: '8-12'    
+    riderRange: '8-12'
     },
 ]
 const validDiscounts = [

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const express = require('express');
 const router = express.Router();
 
@@ -12,7 +13,7 @@ router.post('/:id', async(req,res) => {
     try{
         let strikeObj;
         const paymentConfirm = await booking.findById(req.params.id)
-    
+
         if(paymentConfirm.orderDetails.paymentStatus === 'SUCCESS'){
 
             strikeObj = await confirmBookingMethod(req, paymentConfirm);
@@ -26,4 +27,5 @@ router.post('/:id', async(req,res) => {
     }
 });
 
+>>>>>>> 4b194cbb85be9d87af25db80cee9158f9f361797
 module.exports = router;

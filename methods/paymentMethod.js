@@ -9,7 +9,7 @@ async function PaymentInterfaceMethod(req, paymentLink){
     quesObj.
         QuestionText().
             SetTextToQuestion(`Please Pay and click 'Confirm'!`)
-    
+
     quesObj.Answer(false).AnswerCardArray(strikeObj.VERTICAL_ORIENTATION)
     .AnswerCard()
     .SetHeaderToAnswer(1,strikeObj.FULL_WIDTH)
@@ -19,7 +19,7 @@ async function PaymentInterfaceMethod(req, paymentLink){
     quesObj = quesObj.AnswerCard().
             SetHeaderToAnswer(1, strikeObj.WRAP_WIDTH).
             AddTextRowToAnswer(strikeObj.H4, 'Click once Paid!', "#1746A2", true);
-    
+
     return strikeObj
 }
 module.exports = PaymentInterfaceMethod

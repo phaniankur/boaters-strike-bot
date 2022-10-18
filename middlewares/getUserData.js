@@ -1,7 +1,6 @@
 const booking = require('../models/booking');
 
 function getUserData(req,res,next) {
-
     const userResp = req.body.user_session_variables;
     booking.findById(req.params.id, function(err, data){
         if(err){
@@ -16,7 +15,7 @@ function getUserData(req,res,next) {
             next();
         }
     })
-    
+
 }
 
 module.exports = getUserData;

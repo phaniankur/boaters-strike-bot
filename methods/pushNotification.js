@@ -8,7 +8,7 @@ async function pushNotification(data){
 
     function subtractHours(numOfHours, date = new Date()) {
         date.setHours(date.getHours() - numOfHours);
-      
+
         return date;
     }
 
@@ -36,4 +36,5 @@ async function pushNotification(data){
     }).then(res=> console.log('push scheduled',res.data))
     .catch(err=> console.log(err))
 }
+>>>>>>> 4b194cbb85be9d87af25db80cee9158f9f361797
 module.exports = pushNotification

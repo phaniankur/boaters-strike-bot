@@ -5,9 +5,9 @@ async function emailMethod(req){
 
     const strikeBody = req.body.bybrisk_session_variables;
     const userResp = req.body.user_session_variables;
-    
+
     const strikeObj = new Create('email_method', `${baseAPI}payment/${req.params.id}`);
-    
+
     if(userResp.email){
         quesObj = strikeObj.Question('email');
         quesObj.QuestionCard().SetHeaderToQuestion(1,strikeObj.HALF_WIDTH).
@@ -16,9 +16,9 @@ async function emailMethod(req){
      quesObj = strikeObj.Question('email');
     quesObj.
         QuestionText().
-            SetTextToQuestion(`Type your Email`)   
+            SetTextToQuestion(`Type your Email`)
     }
-    
+
     quesObj.TextInput();
     return strikeObj
 }

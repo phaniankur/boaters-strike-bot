@@ -22,7 +22,7 @@ router.get('/getallbookings', async(req,res) => {
         "orderDetails.bookingStatus": status
         }).sort({_id: -1})
     }
-    
+
     let totalBookings = allBookings.length;
     let allDetails = {
       totalBookings,
@@ -33,7 +33,7 @@ router.get('/getallbookings', async(req,res) => {
     console.log(err)
     res.status(400).json("validation error")
   }
-    
+
   });
 
   module.exports = router;

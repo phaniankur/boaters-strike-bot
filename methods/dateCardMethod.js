@@ -22,13 +22,13 @@ async function dateCardMethod(req){
     rideDateObj.QuestionText().
         SetTextToQuestion("👇Select your ride date");
     rideDateObj.DateInput('Select Date');
-    
+
     // Question interface 2
     //defining question obj
     questionNumberObj = strikeObj.Question('rideRoute');
     questionNumberObj.QuestionText().
         SetTextToQuestion("👇Select your ride type");
-    
+
     // Answer interface 2
     // defining an answer obj for the above  question
     timeSlotAnswerObj = questionNumberObj.Answer(true);
