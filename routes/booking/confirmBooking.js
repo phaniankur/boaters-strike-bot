@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 const express = require('express');
 const router = express.Router();
 
@@ -27,5 +27,4 @@ router.post('/:id', async(req,res) => {
     }
 });
 
->>>>>>> 4b194cbb85be9d87af25db80cee9158f9f361797
 module.exports = router;
