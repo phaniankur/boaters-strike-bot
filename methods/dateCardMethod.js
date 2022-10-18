@@ -14,7 +14,6 @@ async function dateCardMethod(req){
     newBooking.save();
 
     const strikeObj = new Create('getting_started', `${baseAPI}pricecard/${newBooking._id}`);
-    // const strikeObj = new Create('getting_started', `${baseAPI}timecard/${newBooking._id}`);
 
     // Question date
     rideDateObj = strikeObj.Question('dateOfRide');
@@ -35,21 +34,19 @@ async function dateCardMethod(req){
     timeSlotAnswerObj = questionNumberObj.Answer(true);
     timeSlotAnswerObj.AnswerCardArray(strikeObj.VERTICAL_ORIENTATION);
 
-    timeSlotAnswerObj = timeSlotAnswerObj.AnswerCard().
-    SetHeaderToAnswer(10,strikeObj.FULL_WIDTH).
-    // AddGraphicRowToAnswer(strikeObj.PICTURE_ROW,['https://images.thrillophilia.com/image/upload/s--hy87qy6---/c_fill,h_600,q_auto,w_975/f_auto,fl_strip_profile/v1/images/photos/000/013/070/original/1569826243_ganga_arti1.jpg.jpg?1569826243'], ['']).
-    AddTextRowToAnswer("👇Select your Route");
+    // timeSlotAnswerObj = timeSlotAnswerObj.AnswerCard().
+    // SetHeaderToAnswer(10,strikeObj.FULL_WIDTH);
     for(let i=0;i<rideCards.length;i++) {
 
         timeSlotAnswerObj = timeSlotAnswerObj.AnswerCard().
-            SetHeaderToAnswer(2,strikeObj.FULL_WIDTH).
-            AddGraphicRowToAnswer(strikeObj.PICTURE_ROW,[rideCards[i].imgLink], ['']).
-            AddTextRowToAnswer(strikeObj.H3, rideCards[i].rideName,"Black",true).
-            AddTextRowToAnswer(strikeObj.H4,rideCards[i].desc,"#E14D2A",false).
-            AddTextRowToAnswer(strikeObj.H4, 'Starting Price: '+rideCards[i].estimatedAmount,"#Black",true).
-            AddTextRowToAnswer(strikeObj.H4, "Ride Time: " + rideCards[i].rideTime, orange , true).
-            AddTextRowToAnswer(strikeObj.H4 ,"Routes Covered: " + rideCards[i].route,"Black",false).
-            AddTextRowToAnswer(strikeObj.H5, "Pickup Station: " + rideCards[i].pickupGhat,"#687987",false)
+            SetHeaderToAnswer(1,strikeObj.HALF_WIDTH).
+            // AddGraphicRowToAnswer(strikeObj.PICTURE_ROW,[rideCards[i].imgLink], ['']).
+            AddTextRowToAnswer(strikeObj.H3, rideCards[i].rideName,"#1746A2",true).
+            AddTextRowToAnswer(strikeObj.H4,rideCards[i].desc,"#FF731D",false).
+            AddTextRowToAnswer(strikeObj.H4, 'Starts: '+rideCards[i].estimatedAmount,"#1746A2",true).
+            AddTextRowToAnswer(strikeObj.H4, "Timing: " + rideCards[i].rideTime, '#FF731D' , true).
+            AddTextRowToAnswer(strikeObj.H5 ,"Route: " + rideCards[i].route,"#1746A2", true).
+            AddTextRowToAnswer(strikeObj.H5, "Pick-up Station: " + rideCards[i].pickupGhat,"#1746A2",false);
 	}
     return strikeObj
 }

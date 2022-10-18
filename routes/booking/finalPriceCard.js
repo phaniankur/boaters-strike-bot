@@ -10,13 +10,12 @@ const { validDiscounts } = require('../../config/data.js');
 const invalidDiscount = require('../../methods/invalidDiscount');
 
 router.post('/:id', getUserData,  async(req,res) => {
-    // console.log('final Price', req.body)
+
     try{
         const strikeBody = req.body.bybrisk_session_variables;
         const userResp = req.body.user_session_variables;
         const dbRes = req.body.user_session_variables.rideDetails;
-    
-        // console.log('final price card',userResp)
+
         let strikeObj;
     
         if(userResp.discount){
@@ -38,7 +37,7 @@ router.post('/:id', getUserData,  async(req,res) => {
                     rideRoute: dbRes.rideRoute,
                     discountCode: userResp.discount || '',
                     bookingPrice: dbRes.bookingPrice || '',
-                    bookingStatus: 'pending'
+                    // bookingStatus: 'pending'
                 },
             }).then(console.log('saved')).catch(err=> console.log(err))
         }

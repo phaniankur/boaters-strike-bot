@@ -1,4 +1,3 @@
-const baseAPI = require("../config/baseAPI");
 const Create = require("../interfaces/strike");
 const booking = require("../models/booking");
 
@@ -17,31 +16,24 @@ async function confirmBookingMethod(req){
             rideDate: dbRes.rideDate,
             rideRoute: dbRes.rideRoute,
             discountCode: dbRes.discountCode,
-            bookingStatus: 'cancelled',
             orderID: dbRes.orderID,
-            noofRiders: '',
             pickupGhat: 'Kedar Ghat',
-            typeofBoat: '',
             bookingPrice: dbRes.bookingPrice,
-            txnId: '',
-            paymentStatus: ''
+
         },
+        orderDetails:{
+            bookingStatus: 'cancelled'
+        }
+               
     }).catch(err=> console.log(err))
     
-    const strikeObj = new Create('getting_started', '');
+    const strikeObj = new Create('cancel_booking', '');
     
     quesObj = strikeObj.Question('val1');
     quesObj.
         QuestionText().
-            SetTextToQuestion(`Hi ${strikeBody.username}, Your booking has been cancelled!`)
+            SetTextToQuestion(`Hi ${strikeBody.username}, Your booking is cancelled. You may now close this conversation.`)
 
-    //answer
-    cancelAnswerObj = quesObj.Answer(false);
-    cancelAnswerObj.AnswerCardArray(strikeObj.VERTICAL_ORIENTATION);
-
-        cancelAnswerObj = cancelAnswerObj.AnswerCard().
-            SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).
-            AddTextRowToAnswer(strikeObj.H5, 'Go Back', "#009646", true);
     return strikeObj
 }
 module.exports = confirmBookingMethod

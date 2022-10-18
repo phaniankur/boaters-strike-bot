@@ -13,6 +13,7 @@ class Create {
         }
 
         // Declearing constants
+        this.WRAP_WIDTH = 'wrap';
         this.HALF_WIDTH = 'HALF';
         this.FULL_WIDTH='FULL';
         this.PICTURE_ROW='pic_row';

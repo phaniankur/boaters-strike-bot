@@ -3,14 +3,19 @@ const { priceCard } = require("../config/data");
 const Create = require("../interfaces/strike");
 
 function price(req){
-    console.log('price card', req.body)
+
     const userResp = req.body.user_session_variables;
 
     let strikeObj;
-    userResp.rideRoute[0].toLowerCase() === 'ganga aarti darshan' ?
-    strikeObj = new Create('getting_started',`${baseAPI}discountcard/${req.params.id}`):
+
+    // if(userResp.rideRoute !== undefined){
+    //    userResp.rideRoute[0].toLowerCase() === 'ganga aarti boat-ride' ?
+    // strikeObj = new Create('getting_started',`${baseAPI}discountcard/${req.params.id}`):
+    // strikeObj = new Create('getting_started', `${baseAPI}timecard/${req.params.id}`); 
+    // } else{
+    //     strikeObj = new Create('getting_started', `${baseAPI}timecard/${req.params.id}`);
+    // }
     strikeObj = new Create('getting_started', `${baseAPI}timecard/${req.params.id}`);
-    
     // Question interface 5
     //defining question obj
     questionNumberObj = strikeObj.Question('basePrice');
@@ -24,13 +29,13 @@ function price(req){
     for(let i=0;i<priceCard.length;i++) {
         // apennding answers for the above answer obj
         timeSlotAnswerObj.AnswerCard().
-        SetHeaderToAnswer(1,strikeObj.HALF_WIDTH).
-            AddTextRowToAnswer(strikeObj.H3, "₹" + priceCard[i].amount,"Black",true).
-            AddTextRowToAnswer(strikeObj.H4,"Boat Type: " + priceCard[i].boatType,"#d61a7e",false).
-            AddTextRowToAnswer(strikeObj.H4 ,"No of People: " + priceCard[i].riderRange,"Black",false);
+        SetHeaderToAnswer(1,strikeObj.WRAP_WIDTH).
+            AddTextRowToAnswer(strikeObj.H3, "₹" + priceCard[i].amount,"#1746A2",true).
+            AddTextRowToAnswer(strikeObj.H4,"Boat Type: " + priceCard[i].boatType,"#FF731D",false).
+            AddTextRowToAnswer(strikeObj.H4 ,"No of People: " + priceCard[i].riderRange,"#1746A2",true);
             // AddTextRowToAnswer(strikeObj.H5, "Pickup Station: " + priceCard[i].pickupGhat,"#687987",false)
 	}
-    timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(1, strikeObj.HALF_WIDTH).AddTextRowToAnswer(strikeObj.H4, "↩️ Change Ride Date", "#009646", )
+    timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(1, strikeObj.WRAP_WIDTH).AddTextRowToAnswer(strikeObj.H4, "↩️ Change Ride Date", "#009646", )
 
     return strikeObj;
 }
