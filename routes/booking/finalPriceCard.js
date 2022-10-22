@@ -10,13 +10,12 @@ const { validDiscounts } = require('../../config/data.js');
 const invalidDiscount = require('../../methods/invalidDiscount');
 
 router.post('/:id', getUserData,  async(req,res) => {
-    // console.log('final Price', req.body)
+
     try{
         const strikeBody = req.body.bybrisk_session_variables;
         const userResp = req.body.user_session_variables;
         const dbRes = req.body.user_session_variables.rideDetails;
-    
-        // console.log('final price card',userResp)
+
         let strikeObj;
     
         if(userResp.discount){
@@ -24,23 +23,22 @@ router.post('/:id', getUserData,  async(req,res) => {
             if(discountValid){
                 // userResp.basePrice[0] = userResp.basePrice[0].replace('₹', '')
                 dbRes.bookingPrice = dbRes.bookingPrice - discountValid.discountPrice
+                await booking.findByIdAndUpdate(req.params.id,{
+                    riderPhone: strikeBody.phone,
+                    rideDetails:{
+                        rideTime: dbRes.rideTime,
+                        rideDate: dbRes.rideDate,
+                        rideRoute: dbRes.rideRoute,
+                        discountCode: userResp.discount || '',
+                        bookingPrice: dbRes.bookingPrice || '',
+                        // bookingStatus: 'pending'
+                    },
+                }).then(console.log('saved')).catch(err=> console.log(err))
                 strikeObj = finalPrice(req);
             } else{
                 console.log('invalid code')
                 strikeObj = invalidDiscount(req);
             }
-    
-            await booking.findByIdAndUpdate(req.params.id,{
-                riderPhone: strikeBody.phone,
-                rideDetails:{
-                    rideTime: dbRes.rideTime,
-                    rideDate: dbRes.rideDate,
-                    rideRoute: dbRes.rideRoute,
-                    discountCode: userResp.discount || '',
-                    bookingPrice: dbRes.bookingPrice || '',
-                    bookingStatus: 'pending'
-                },
-            }).then(console.log('saved')).catch(err=> console.log(err))
         }
         res.status(200).json(strikeObj.Data());
     }catch(err){

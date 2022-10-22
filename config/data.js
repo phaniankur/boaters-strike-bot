@@ -1,23 +1,23 @@
 const rideCards = [
-    {rideName:'Ganga Aarti Darshan',
-    desc: 'Your ride will start from Kedar Ghat to Marnikarnika Ghat via Ganga Aarti Darshan and back.',
-    rideTime: '6:00 PM',
-    route: 'Kedar-Aarti-Marnikarnika-Kedar',
+    {rideName:'Ganga Aarti Boat-Ride',
+    desc: 'Experience the beautiful Ganga-Aarti from boat.',
+    rideTime: '6:00 PM Fixed',
+    route: 'Kedar-Ganga Aarti-Marnikarnika-Kedar',
     pickupGhat: 'Kedar ghat',
-    estimatedAmount: '@ ₹599 onwards',
+    estimatedAmount: '@₹599/- onwards',
     imgLink: 'https://images.thrillophilia.com/image/upload/s--hy87qy6---/c_fill,h_600,q_auto,w_975/f_auto,fl_strip_profile/v1/images/photos/000/013/070/original/1569826243_ganga_arti1.jpg.jpg?1569826243'
     },
-    {rideName:'Basic Ride',
-    desc: 'Your ride will start from Kedar Ghat to Assi Ghat to Marnikarnika Ghat and back to Kedar Ghat.',
+    {rideName:'Regular Boat-Ride',
+    desc: 'Enjoy the beautiful view of the ghats of Varanasi',
     rideTime: 'Flexible',
     route: 'Kedar-Assi-Marnikarnika-Kedar',
     pickupGhat: 'Kedar ghat',
-    estimatedAmount: '@₹799 onwards',
+    estimatedAmount: '@₹799/- onwards',
     imgLink: 'https://media.tacdn.com/media/attractions-splice-spp-674x446/07/72/68/de.jpg'
     }
 ]
 const timeSlots = [
-    '5:00 AM',
+    // '5:00 AM',
     '5:30 AM',
     '6:00 AM',
     '6:30 AM',
@@ -31,8 +31,8 @@ const timeSlots = [
     '6:00 PM',
     '6:30 PM',
     '7:00 PM',
-    '7:30 PM',
-    '8:00 PM',
+    // '7:30 PM',
+    // '8:00 PM',
 ]
 // const pickupPoint = [
 //     'Kedar Ghat',
@@ -58,9 +58,13 @@ const validDiscounts = [
     discountPrice: 50,
     partner: 'tastewithdada'
     },
-    {code:'boatersop',
+    {code:'boatrr',
     discountPrice: 100,
     partner: 'gkp'
+    },
+    {code:'winteriscoming',
+    discountPrice:50,
+    partner: 'billu'
     }
 ]
 

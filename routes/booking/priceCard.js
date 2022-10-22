@@ -4,7 +4,6 @@ const router = express.Router();
 const booking = require('../../models/booking.js');
 const getUserData = require('../../middlewares/getUserData.js');
 const price = require('../../methods/price.js');
-const dateCardMethod = require('../../methods/dateCardMethod.js');
 
 router.post('/:id', getUserData, async(req,res) => {
     
@@ -18,8 +17,10 @@ router.post('/:id', getUserData, async(req,res) => {
             rideDetails:{
                 rideDate: userResp.dateOfRide[0],
                 rideRoute: userResp.rideRoute[0],
-                bookingStatus: 'initiated'
             },
+            orderDetails:{
+                bookingStatus: 'initiated'
+            }
         }).catch(err=> console.log(err))
 
         let strikeObj = await price(req);

@@ -5,11 +5,13 @@ const bookingSchema = new Schema({
 
     riderPhone: {type: Number, required: false},
     bookingName: {type: String, required: false},
-    riderEmail: {type: String, required: false},
+    riderEmail: {type: String, lowercase: true, required: false},
+    userId: {type: String, required: false},
+    businessId: {type: String, required: false},
+    username: {type: String, required: false},
     rideDetails:{
-        discountCode: {type: String, required: false},
-        orderID: {type: String, required: false},
-        txnId: {type: String, required: false},
+        bookingPrice: {type: Number, required: false},
+        discountCode: {type: String, required: false},  
         rideDate: { type: String, required: false },
         rideTime: {type: String, required: false},
         noofRiders: {type: String, required: false},
@@ -17,8 +19,14 @@ const bookingSchema = new Schema({
         typeofBoat: {type: String, required: false},
         rideRoute: {type: String, required: false},
         bookingStatus: {type: String, required: false},
+    },
+    orderDetails:{
+        bookingStatus: {type: String, required: false},
+        txnId: {type: String, required: false},
         paymentStatus: {type: String, required: false},
-        bookingPrice: {type: Number, required: false}
+        bookingPrice: {type: Number, required: false},
+        orderID: {type: String, required: false},
+        paymentMethod: {type: String, required: false},
     },
 
     feedback: {
@@ -26,6 +34,6 @@ const bookingSchema = new Schema({
         feedbackMsg: {type: String, required: false}
     }
 },
-{timeStamp: true}
+{timestamps: true}
 ); 
 module.exports = mongoose.model("booking", bookingSchema)
