@@ -7,7 +7,7 @@ const Create = require('../interfaces/strike');
 const baseAPI = "http://5c96-2405-201-a407-908e-111-dbb5-3e1c-804e.ngrok.io/my-first-app/"
 router.post('/',(req,res,next) => {
 
-    const strikeObj = new Create('getting_started', baseAPI+'respondBack');
+    const strikeObj = new Create('getting_startedd', baseAPI+'respondBack');
 
     //Question Card interface
     questionCardObj = strikeObj.Question('cardResp');
