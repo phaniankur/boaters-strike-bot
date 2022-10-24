@@ -3,7 +3,6 @@ const Create = require("../interfaces/strike");
 
 async function emailMethod(req){
 
-    const strikeBody = req.body.bybrisk_session_variables;
     const userResp = req.body.user_session_variables;
     
     const strikeObj = new Create('email_method', `${baseAPI}payment/${req.params.id}`);

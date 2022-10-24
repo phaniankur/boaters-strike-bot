@@ -5,24 +5,20 @@ const booking = require("../../models/booking");
 //template
 router.get('/getallbookings', async(req,res) => {
 
-  let phone = req.body.riderPhone;
+  let phone = parseInt(req.body.riderPhone);
   let status = req.body.status;
+  let orderId = req.body.orderId;
   try{
-
-    if(phone === '' && status === ''){
-      allBookings = await booking.find({}).sort({_id: -1})
-    } else{
-      phone !== '' && status === 'all' ?
-    allBookings = await booking.find({
-      "riderPhone" :parseInt(phone)
-      }).sort({_id: -1})
-      :
-      allBookings = await booking.find({
-        "riderPhone" :parseInt(phone),
-        "orderDetails.bookingStatus": status
-        }).sort({_id: -1})
-    }
-    
+    let allBookings = await booking.find({
+      "$and": [
+        phone?
+        {'riderPhone': phone}: {},
+        status?
+        {'orderDetails.bookingStatus': status}: {},
+        orderId?
+        {'orderDetails.orderID': orderId}: {}
+      ]        
+    }).sort({_id: -1})   
     let totalBookings = allBookings.length;
     let allDetails = {
       totalBookings,
@@ -33,7 +29,7 @@ router.get('/getallbookings', async(req,res) => {
     console.log(err)
     res.status(400).json("validation error")
   }
-    
-  });
+      
+    });
 
-  module.exports = router;
+    module.exports = router;

@@ -20,4 +20,15 @@ router.post('/newdiscount', async(req,res) => {
     
   });
 
+router.get('/alldiscounts', async(req,res) => {
+  try{
+    let allDiscounts = await discount.find({})
+    res.status(200).json(allDiscounts)
+  }catch(err){
+    console.log(err)
+    res.status(400).json("validation error")
+  }
+    
+  });
+
   module.exports = router;

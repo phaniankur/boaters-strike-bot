@@ -11,7 +11,7 @@ async function invalidPaymentMethod(req, paymentLink){
             SetTextToQuestion(`Payment not confirmed. Click on the link to pay.`)
     
     quesObj.Answer(false).AnswerCardArray(strikeObj.VERTICAL_ORIENTATION)
-    .AnswerCard().SetHeaderToAnswer(2,strikeObj.FULL_WIDTH).AddTextRowToAnswer(strikeObj.H4, req.query.paymentLink ,"#FF731D",true)
+    .AnswerCard().SetHeaderToAnswer(2,strikeObj.FULL_WIDTH).AddTextRowToAnswer(strikeObj.H4, req.query.paymentLink ,"#FF731D",false)
 
     quesObj = quesObj.AnswerCard().
             SetHeaderToAnswer(1, strikeObj.WRAP_WIDTH).

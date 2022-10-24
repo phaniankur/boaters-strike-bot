@@ -12,7 +12,7 @@ async function PaymentInterfaceMethod(req, paymentLink){
     
     quesObj.Answer(false).AnswerCardArray(strikeObj.VERTICAL_ORIENTATION)
     .AnswerCard()
-    .SetHeaderToAnswer(1,strikeObj.FULL_WIDTH)
+    .SetHeaderToAnswer(10,strikeObj.FULL_WIDTH)
     // .AddTextRowToAnswer(strikeObj.H4, 'Tap to Pay' ,"#1746A2",true)
     .AddTextRowToAnswer(strikeObj.H4, paymentLink ,"#FF731D",false)
 

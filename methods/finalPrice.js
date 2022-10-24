@@ -17,7 +17,7 @@ function finalprice(req){
     
     userResp && userResp.discount ?
     timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(10, strikeObj.FULL_WIDTH).
-    AddTextRowToAnswer(strikeObj.H4, 'Yay!, Discount Applied. Here is your ride summary 👇', "#1746A2", false) : null
+    AddTextRowToAnswer(strikeObj.H4, 'Yay! Discount Applied. Here is your ride summary 👇', "#1746A2", false) : null
 
     timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(10, strikeObj.HALF_WIDTH).
     AddTextRowToAnswer(strikeObj.H4, "Type: " + dbRes.rideRoute, "#1746A2", true).

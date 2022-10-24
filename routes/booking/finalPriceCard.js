@@ -8,6 +8,7 @@ const finalPrice = require('../../methods/finalPrice');
 const { validDiscounts } = require('../../config/data.js');
 
 const invalidDiscount = require('../../methods/invalidDiscount');
+const discount = require('../../models/discount')
 
 router.post('/:id', getUserData,  async(req,res) => {
 
@@ -19,10 +20,10 @@ router.post('/:id', getUserData,  async(req,res) => {
         let strikeObj;
     
         if(userResp.discount){
-            const discountValid = await validDiscounts.find(item => item.code === userResp.discount.toLowerCase())
-            if(discountValid){
+            const discountValid = await discount.find({code: userResp.discount.toLowerCase()})
+            if(discountValid.length>0){
                 // userResp.basePrice[0] = userResp.basePrice[0].replace('₹', '')
-                dbRes.bookingPrice = dbRes.bookingPrice - discountValid.discountPrice
+                dbRes.bookingPrice = dbRes.bookingPrice - discountValid[0].amount
                 await booking.findByIdAndUpdate(req.params.id,{
                     riderPhone: strikeBody.phone,
                     rideDetails:{

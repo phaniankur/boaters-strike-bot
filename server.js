@@ -2,7 +2,7 @@ const http = require('http');
 const app = require('./app');
 const dbConfig = require('./config/dbConfig');
 
-const port = 5010;
+const port = 6012;
 const hostname = '127.0.0.1';
 
 const server = http.createServer(app); 

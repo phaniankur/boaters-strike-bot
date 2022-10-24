@@ -15,7 +15,7 @@ router.post('/:id', async(req,res) => {
     
         if(paymentConfirm.orderDetails.paymentStatus === 'SUCCESS'){
 
-            strikeObj = await confirmBookingMethod(req, paymentConfirm);
+            strikeObj = await confirmBookingMethod(paymentConfirm);
         } else{
             strikeObj = await invalidPaymentMethod(req);
         }

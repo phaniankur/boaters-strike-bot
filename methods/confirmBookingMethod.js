@@ -1,8 +1,6 @@
 const Create = require("../interfaces/strike");
 
-async function confirmBookingMethod(req, paymentConfirm){
-
-    const strikeBody = req.body.bybrisk_session_variables;
+async function confirmBookingMethod(paymentConfirm){
     
     const strikeObj = new Create('confirm booking', '');
     
