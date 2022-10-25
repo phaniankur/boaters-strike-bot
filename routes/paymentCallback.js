@@ -1,5 +1,4 @@
 const express = require('express');
-const confirmBookingMethod = require('../methods/confirmBookingMethod');
 const emailNotification = require('../methods/emailNotification');
 const pushNotification = require('../methods/pushNotification');
 const router = express.Router();
@@ -45,7 +44,7 @@ router.post('/paymentcallback', (req,res) => {
         ).catch(err=> console.log(err))
       }
       console.log("payment middleware")
-      res.status(200).json(strikeObj.Data());
+      res.status(200);
   }catch(err){
     console.log(err)
   }
