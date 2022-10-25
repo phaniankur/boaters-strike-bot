@@ -27,6 +27,7 @@ const bookingSchema = new Schema({
         bookingPrice: {type: Number, required: false},
         orderID: {type: String, required: false},
         paymentMethod: {type: String, required: false},
+        customerName: {type: String, required: false},
     },
 
     feedback: {

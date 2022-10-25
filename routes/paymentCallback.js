@@ -17,7 +17,6 @@ router.post('/paymentcallback', (req,res) => {
       let orderID = req.body.data.order.order_id;
       let customerName = req.body.data.customer_details.customer_name;
       // console.log('Payment CALLBACK' ,paymentStatus, conversationID)
-      // return transaction_status
       booking.findOneAndUpdate({_id: conversationID},
         {
           $set : {
@@ -27,7 +26,8 @@ router.post('/paymentcallback', (req,res) => {
               paymentStatus: paymentStatus,
               bookingPrice: paidAmount,
               orderID: orderID,
-              paymentMethod: req.body.data.link_meta.payment_methods
+              paymentMethod: req.body.data.link_meta.payment_methods,
+              customerName: customerName
             }            
           }
         },
@@ -41,7 +41,6 @@ router.post('/paymentcallback', (req,res) => {
           }     
           await emailNotification(data);
           await pushNotification(data);
-          strikeObj = await confirmBookingMethod();
         },        
         ).catch(err=> console.log(err))
       }
