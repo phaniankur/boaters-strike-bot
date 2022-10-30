@@ -530,7 +530,7 @@ async function emailNotification(data){
         bot_id: data.businessId,
         to: 'contact.boatrr@gmail.com',
         subject: `New Booking ALERT! | OrderID: ${data.orderDetails.orderID} Boatrr`,
-        body: `Booking Details:<br><br><h1>ORDERID: ${data.orderDetails.orderID}</h1><br> Ride Date: ${data.rideDetails.rideDate}<br>Ride Time: ${data.rideDetails.rideTime}<br> Paid Amount: ${data.orderDetails.bookingPrice}<br><br>Regards,<br>Team boatrr.`
+        body: `Booking Details:<br><br><h1>ORDERID: ${data.orderDetails.orderID}</h1><br> Username: ${data.username}<br> Ride Date: ${data.rideDetails.rideDate}<br>Ride Time: ${data.rideDetails.rideTime}<br> Paid Amount: ${data.orderDetails.bookingPrice}<br><br>Regards,<br>Team boatrr.`
     }
 
     await axios.post(EMAIL_URL, adminBody, 
