@@ -8,7 +8,6 @@ async function confirmBookingMethod(paymentConfirm){
     quesObj.
         QuestionText().
             SetTextToQuestion(`Yay! Your boat-ride is booked with boatrr!\nHere are your ride details.👇`)
-            // SetTextToQuestion(`Hi ${strikeBody.username}, your ride is Booked with Boatrr.`)
             timeSlotAnswerObj = quesObj.Answer(true);
             timeSlotAnswerObj.AnswerCardArray(strikeObj.VERTICAL_ORIENTATION);
 

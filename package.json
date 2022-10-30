@@ -1,5 +1,5 @@
 {
-  "name": "Boater",
+  "name": "boatrr. server",
   "version": "1.0.0",
   "description": "This is the boiler plate server code for building a strike app",
   "main": "index.js",
@@ -12,11 +12,12 @@
     "strike",
     "server"
   ],
-  "author": "Shashank P. Sharma",
+  "author": "Onkoor",
   "license": "ISC",
   "dependencies": {
     "api": "^4.5.2",
     "axios": "^0.27.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.17.3",
     "moment": "^2.29.4",

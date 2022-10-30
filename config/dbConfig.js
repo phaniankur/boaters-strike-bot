@@ -5,7 +5,7 @@ dotenv.config();
 
 const dbConfig = async ()=>{
     try{
-        const connectDb = await mongoose.connect(process.env.MONGO_URL_STAGING,{
+        const connectDb = await mongoose.connect(process.env.MONGO_URL_PROD,{
             useNewUrlParser: true,
             useUnifiedTopology: true,
             // useCreateIndex: true

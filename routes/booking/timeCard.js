@@ -21,7 +21,7 @@ router.post('/:id', getUserData, async(req,res) => {
             let rideTime;
             if(dbRes.rideRoute.toLowerCase() === 'ganga aarti boat-ride'){
                 strikeObj = await acceptDiscountMethod(req);
-                rideTime = '6:00 PM';
+                rideTime = '18:00';
             } else{
                 strikeObj = await timeCardMethod(req);
                 rideTime = '';

@@ -4,7 +4,7 @@ dotenv.config();
 const baseAPI = require('../config/baseAPI');
 
 
-async function getPaymentLink(req, res, next){
+async function getPaymentLink(req, res){
 
 sdk.server('https://api.cashfree.com/pg');
 const strikeBody = req.body.bybrisk_session_variables;
@@ -24,8 +24,8 @@ const paymentData = await sdk.CreatePaymentLink({
     upi_intent: true
   },
   link_id: req.params.id, //conversation ID
-  link_amount: 1,
-//   link_amount: dbRes.bookingPrice,
+  // link_amount: 1,
+  link_amount: dbRes.bookingPrice,
   link_currency: 'INR',
   link_purpose: 'Paying to boatrr.'
 }, {

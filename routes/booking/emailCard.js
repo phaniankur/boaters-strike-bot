@@ -13,10 +13,11 @@ try{
     const dbRes = req.body.user_session_variables.rideDetails;
 
     let strikeObj;
-    if(userResp.confirmBooking[0] === 'Proceed to Payment'){
+    // if(userResp.confirmBooking[0] === 'Proceed to Payment'){
+    if(userResp.confirmBooking[0].split(" ").includes("Pay")){
         // do something
         strikeObj = await emailMethod(req);
-    } else if(userResp.confirmBooking[0] === 'Cancel'){
+    } else if(userResp.confirmBooking[0].split(" ").includes("Cancel")){
         await booking.findByIdAndUpdate(req.params.id,{
             riderPhone: strikeBody.phone,
             riderEmail: '',

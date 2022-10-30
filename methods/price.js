@@ -1,39 +1,36 @@
 const baseAPI = require("../config/baseAPI");
-const { priceCard } = require("../config/data");
+const { priceCard, aartiPrice,regularPrice } = require("../config/data");
 const Create = require("../interfaces/strike");
 
 function price(req){
 
     const userResp = req.body.user_session_variables;
+    let boatRate;
 
-    let strikeObj;
+    if(userResp.rideRoute){
 
-    // if(userResp.rideRoute !== undefined){
-    //    userResp.rideRoute[0].toLowerCase() === 'ganga aarti boat-ride' ?
-    // strikeObj = new Create('getting_started',`${baseAPI}discountcard/${req.params.id}`):
-    // strikeObj = new Create('getting_started', `${baseAPI}timecard/${req.params.id}`); 
-    // } else{
-    //     strikeObj = new Create('getting_started', `${baseAPI}timecard/${req.params.id}`);
-    // }
-    strikeObj = new Create('getting_started', `${baseAPI}timecard/${req.params.id}`);
-    // Question interface 5
-    //defining question obj
+        userResp.rideRoute[0] === 'Ganga Aarti Boat-Ride'?
+        boatRate = aartiPrice : boatRate = regularPrice;
+    } else{
+        boatRate = regularPrice;
+    }
+
+    let strikeObj = new Create('getting_started', `${baseAPI}timecard/${req.params.id}`);
+
     questionNumberObj = strikeObj.Question('basePrice');
     questionNumberObj.QuestionText().
-        SetTextToQuestion("Please select your ride");
+        SetTextToQuestion("Select a pack. 👇");
     
-    // Answer interface 5
-    // defining an answer obj for the above  question
-    timeSlotAnswerObj = questionNumberObj.Answer(true);
+    timeSlotAnswerObj = questionNumberObj.Answer(false);
     timeSlotAnswerObj.AnswerCardArray(strikeObj.VERTICAL_ORIENTATION);
-    for(let i=0;i<priceCard.length;i++) {
-        // apennding answers for the above answer obj
+    for(let i=0;i<boatRate.length;i++) {
+
         timeSlotAnswerObj.AnswerCard().
         SetHeaderToAnswer(1,strikeObj.WRAP_WIDTH).
-            AddTextRowToAnswer(strikeObj.H3, "₹" + priceCard[i].amount,"#1746A2",true).
-            AddTextRowToAnswer(strikeObj.H4,"Boat Type: " + priceCard[i].boatType,"#FF731D",false).
-            AddTextRowToAnswer(strikeObj.H4 ,"No of People: " + priceCard[i].riderRange,"#1746A2",true);
-            // AddTextRowToAnswer(strikeObj.H5, "Pickup Station: " + priceCard[i].pickupGhat,"#687987",false)
+            AddTextRowToAnswer(strikeObj.H3, "₹" + boatRate[i].amount,"#1746A2",true).
+            AddTextRowToAnswer(strikeObj.H4,"Boat Type: " + boatRate[i].boatType,"#FF731D",false).
+            AddTextRowToAnswer(strikeObj.H4 ,"No of People: " + boatRate[i].riderRange,"#1746A2",true);
+            // AddTextRowToAnswer(strikeObj.H5, "Pickup Station: " + boatRate[i].pickupGhat,"#687987",false)
 	}
     timeSlotAnswerObj.AnswerCard().SetHeaderToAnswer(1, strikeObj.WRAP_WIDTH).AddTextRowToAnswer(strikeObj.H4, "↩️ Change Ride Date", "#009646", )
 

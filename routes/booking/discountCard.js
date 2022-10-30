@@ -16,7 +16,7 @@ try{
     let bookingPrice;
     if(dbRes.rideRoute === 'Ganga Aarti Boat-Ride'){
 
-        rideTime = '6:00 PM';
+        rideTime = '18:00';
         userResp.basePrice[0] = userResp.basePrice[0].replace('₹', '')
         bookingPrice = userResp.basePrice[0];
     }

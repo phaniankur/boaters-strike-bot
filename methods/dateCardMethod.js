@@ -10,6 +10,7 @@ async function dateCardMethod(req){
 
     const newBooking = await new booking({
         riderPhone: strikeBody.phone,
+        username: strikeBody.username
     })
     newBooking.save();
 
@@ -20,18 +21,18 @@ async function dateCardMethod(req){
 
     // Answer date
     rideDateObj.QuestionText().
-        SetTextToQuestion("👇Select your ride date");
-    rideDateObj.DateInput('Select Date');
+        SetTextToQuestion(`Hi ${strikeBody.username}, select your ride date.👇`);
+        rideDateObj.DateInput('Select Date');
     
     // Question interface 2
     //defining question obj
     questionNumberObj = strikeObj.Question('rideRoute');
     questionNumberObj.QuestionText().
-        SetTextToQuestion("👇Select your ride type");
+        SetTextToQuestion("👇 Select your ride type");
     
     // Answer interface 2
     // defining an answer obj for the above  question
-    timeSlotAnswerObj = questionNumberObj.Answer(true);
+    timeSlotAnswerObj = questionNumberObj.Answer(false);
     timeSlotAnswerObj.AnswerCardArray(strikeObj.VERTICAL_ORIENTATION);
 
     // timeSlotAnswerObj = timeSlotAnswerObj.AnswerCard().

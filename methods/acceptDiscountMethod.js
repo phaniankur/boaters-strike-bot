@@ -9,7 +9,7 @@ async function acceptDiscountMethod(req){
     haveDiscObj.QuestionText().
         SetTextToQuestion("Do you have a Discount Code?");
 
-    getDiscAns = haveDiscObj.Answer(true);
+    getDiscAns = haveDiscObj.Answer(false);
     getDiscAns.AnswerCardArray(strikeObj.VERTICAL_ORIENTATION);
 
     getDiscAns = getDiscAns.AnswerCard().

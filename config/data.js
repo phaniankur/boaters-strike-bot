@@ -1,37 +1,38 @@
 const rideCards = [
     {rideName:'Ganga Aarti Boat-Ride',
     desc: 'Experience the beautiful Ganga-Aarti from boat.',
-    rideTime: '6:00 PM Fixed',
-    route: 'Kedar-Ganga Aarti-Marnikarnika-Kedar',
+    rideTime: '18:00 Fixed',
+    route: 'Kedar Ghat-Ganga Aarti-Marnikarnika Ghat-Kedar Ghat',
     pickupGhat: 'Kedar ghat',
-    estimatedAmount: '@₹599/- onwards',
+    estimatedAmount: '@₹1399/- onwards',
     imgLink: 'https://images.thrillophilia.com/image/upload/s--hy87qy6---/c_fill,h_600,q_auto,w_975/f_auto,fl_strip_profile/v1/images/photos/000/013/070/original/1569826243_ganga_arti1.jpg.jpg?1569826243'
     },
     {rideName:'Regular Boat-Ride',
     desc: 'Enjoy the beautiful view of the ghats of Varanasi',
     rideTime: 'Flexible',
-    route: 'Kedar-Assi-Marnikarnika-Kedar',
+    route: 'Kedar Ghat-Marnikarnika Ghat-Kedar Ghat',
     pickupGhat: 'Kedar ghat',
-    estimatedAmount: '@₹799/- onwards',
+    estimatedAmount: '@₹1099/- onwards',
     imgLink: 'https://media.tacdn.com/media/attractions-splice-spp-674x446/07/72/68/de.jpg'
     }
 ]
 const timeSlots = [
     // '5:00 AM',
-    '5:30 AM',
-    '6:00 AM',
-    '6:30 AM',
-    '7:00 AM',
-    '7:30 AM',
-    '8:00 AM',
-    '4:00 PM',
-    '4:30 PM',
-    '5:00 PM',
-    '5:30 PM',
-    '6:00 PM',
-    '6:30 PM',
-    '7:00 PM',
-    // '7:30 PM',
+    '05:30',
+    '06:00',
+    '06:30',
+    '07:00',
+    '07:30',
+    '08:00',
+    '09:00',
+    '16:00',
+    '16:30',
+    '17:00',
+    '17:30',
+    '18:00',
+    '18:30',
+    '19:00',
+    '7:30 PM',
     // '8:00 PM',
 ]
 // const pickupPoint = [
@@ -40,18 +41,50 @@ const timeSlots = [
 // ]
 
 const priceCard = [
-    {amount: 500,
-    boatType: 'Motor Boat',
-    riderRange: '1-4'    
+    {amount: 1199,
+    boatType: 'Hand Boat',
+    riderRange: '1-6'    
     },
-    {amount: 800,
+    {amount: 1499,
     boatType: 'Motor Boat',
-    riderRange: '5-8'    
+    riderRange: '1-8'    
     },
-    {amount: 1000,
+    {amount: 1799,
     boatType: 'Motor Boat',
-    riderRange: '8-12'    
+    riderRange: '1-10'    
     },
+    {amount: 2099,
+    boatType: 'Motor Boat',
+    riderRange: '1-12'    
+    },
+]
+const regularPrice = [
+    {amount: 1099,
+    boatType: 'Hand Boat',
+    riderRange: '1-6'    
+    },
+    {amount: 1299,
+    boatType: 'Motor Boat',
+    riderRange: '1-8'    
+    },
+    {amount: 1799,
+    boatType: 'Motor Boat',
+    riderRange: '9-12'    
+    }
+]
+const aartiPrice = [
+    {amount: 1699,
+    boatType: 'Hand Boat',
+    riderRange: '1-6'    
+    },
+    {amount: 1799,
+    boatType: 'Motor Boat',
+    riderRange: '1-8'    
+    },
+    {amount: 2299,
+    boatType: 'Motor Boat',
+    riderRange: '9-12'    
+    }
 ]
 const validDiscounts = [
     {code:'harhargange',
@@ -68,4 +101,4 @@ const validDiscounts = [
     }
 ]
 
-module.exports = {rideCards, timeSlots, priceCard, validDiscounts}
+module.exports = {rideCards, timeSlots, priceCard, aartiPrice, regularPrice, validDiscounts}

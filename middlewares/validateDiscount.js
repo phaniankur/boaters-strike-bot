@@ -1,4 +1,3 @@
-const baseAPI = require("../config/baseAPI");
 const { validDiscounts } = require("../config/data");
 
 function validateDiscount(req,res,next) {

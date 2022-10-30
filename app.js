@@ -1,5 +1,6 @@
 const express = require('express'), bodyParser = require('body-parser');
 const app = express();
+var cors = require('cors')
 
 const dateCard = require('./routes/booking/dateCard');
 const timeCard = require('./routes/booking/timeCard');
@@ -18,6 +19,7 @@ const about = require('./routes/aboutUs');
 const getAllBookingStatus = require('./routes/webAPIs/getAllBookingStatus');
 const addDiscount = require('./routes/webAPIs/addDiscount');
 
+app.use(cors())
 app.use(bodyParser.json());
 
 app.use('/boatrr', getAllBookingStatus, previousOrders, paymentCallBack, about, addDiscount);
